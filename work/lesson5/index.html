@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Explaining the Document Object Model</title>
+  <style type="text/css">
+    #slideshow {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    #preview {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Web Design</h1>
+  <p>These are the things you should know.</p>
+  <ol id="linklist">
+    <li>
+      <a href="javascript:void(0);" id="a1">Structure</a>
+    </li>
+    <li>
+      <a href="javascript:void(0);" id="a2">Presentation</a>
+    </li>
+    <li>
+      <a href="javascript:void(0);" id="a3">Behavior</a>
+    </li>
+  </ol>
+  <div id="slideshow">
+    <img src="images/topics.gif" id="preview">
+  </div>
+  
+  <script>
+  	window.onload = function(){
+		 var run = document.getElementById("preview");
+		 var a1 = document.getElementById("a1");
+		 var a2 = document.getElementById("a2");
+		 var a3 = document.getElementById("a3");
+		 
+		 var speed = 2; //图片滑动的速度
+		 var timer = null; //图片滑动的间隔时间
+		 
+		 //三个按钮的点击事件
+		 a1.onclick = function(){
+		  startrun(-100);
+		 }
+		 a2.onclick = function(){
+		  startrun(-200);
+		 }
+		  a3.onclick = function(){
+		  startrun(-300);
+		 }
+		  
+		  
+		 function startrun(target){
+		   clearInterval(timer);
+		  timer = setInterval(function(){
+		   if(run.offsetLeft <target){
+		    speed = 20;
+		   }else{
+		    speed = -20;
+		   }
+		   if(run.offsetLeft ==target){
+		    clearInterval(timer);
+		   }
+		   else{
+		    run.style.left = run.offsetLeft +speed +"px";
+		   }
+		  },20)
+		 }
+	}
+  </script>
+</body>
+
+</html>
