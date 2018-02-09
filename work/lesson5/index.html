@@ -34,7 +34,7 @@
     <img src="images/topics.gif" id="preview">
   </div>
   
-  <script>
+   <script>
   	window.onload = function(){
 		 var run = document.getElementById("preview");
 		 var a1 = document.getElementById("a1");
@@ -59,6 +59,7 @@
 		 function startrun(target){
 		   clearInterval(timer);
 		  timer = setInterval(function(){
+		  	//根据当前位置判断速度的移动方向，若当前位置小于目标位置，则正向移动，反之，则反向移动
 		   if(run.offsetLeft <target){
 		    speed = 20;
 		   }else{
